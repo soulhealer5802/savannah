@@ -1,0 +1,533 @@
+:root {
+            --savannah-brown: #8B4513;
+            --acacia-green: #556B2F;
+            --sunset-orange: #D2691E;
+            --golden-grass: #DAA520;
+            --light-beige: #F5F5DC;
+            --dark-brown: #5D4037;
+            --gospel-purple: #6A5ACD;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--savannah-brown), var(--dark-brown));
+            color: var(--light-beige);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23556B2F" opacity="0.1"/><path d="M0,70 Q20,50 40,70 T80,70 L100,100 L0,100 Z" fill="%238B4513" opacity="0.2"/></svg>');
+            background-size: 300px;
+        }
+        
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--acacia-green);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(90deg, transparent, var(--golden-grass), transparent);
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .logo {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 10px;
+            color: var(--golden-grass);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .logo .tagline {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--light-beige);
+        }
+        
+        .accent-icon {
+            color: var(--golden-grass);
+            margin: 0 10px;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: rgba(139, 69, 19, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--acacia-green);
+        }
+        
+        .card.gospel::after {
+            background: var(--gospel-purple);
+        }
+        
+        .card h2 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--golden-grass);
+        }
+        
+        .card.gospel h2 {
+            color: #B19CD9;
+        }
+        
+        .card h2 i {
+            color: var(--acacia-green);
+        }
+        
+        .card.gospel h2 i {
+            color: var(--gospel-purple);
+        }
+        
+        .location-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: rgba(85, 107, 47, 0.3);
+            border-radius: 10px;
+        }
+        
+        .location-icon {
+            font-size: 2rem;
+            color: var(--golden-grass);
+        }
+        
+        .location-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .location-info p {
+            opacity: 0.8;
+        }
+        
+        .top-songs-list {
+            list-style: none;
+            counter-reset: song-counter;
+        }
+        
+        .top-songs-list li {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            margin-bottom: 12px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .top-songs-list li::before {
+            counter-increment: song-counter;
+            content: counter(song-counter);
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+            color: var(--golden-grass);
+            margin-right: 15px;
+        }
+        
+        .gospel .top-songs-list li::before {
+            color: #B19CD9;
+        }
+        
+        .top-songs-list li:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .song-info {
+            flex: 1;
+        }
+        
+        .song-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--golden-grass);
+        }
+        
+        .gospel .song-title {
+            color: #B19CD9;
+        }
+        
+        .song-artist {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .song-stats {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .song-stat {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .trend-indicator {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .trend-up {
+            background: rgba(0, 128, 0, 0.3);
+            color: #90ee90;
+        }
+        
+        .trend-down {
+            background: rgba(255, 0, 0, 0.3);
+            color: #ffcccb;
+        }
+        
+        .trend-new {
+            background: rgba(218, 165, 32, 0.3);
+            color: var(--golden-grass);
+        }
+        
+        .gospel .trend-new {
+            background: rgba(106, 90, 205, 0.3);
+            color: #B19CD9;
+        }
+        
+        .song-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            background: rgba(85, 107, 47, 0.5);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--light-beige);
+            transition: all 0.3s ease;
+        }
+        
+        .gospel .action-btn {
+            background: rgba(106, 90, 205, 0.5);
+        }
+        
+        .action-btn:hover {
+            background: var(--acacia-green);
+            transform: scale(1.1);
+        }
+        
+        .gospel .action-btn:hover {
+            background: var(--gospel-purple);
+        }
+        
+        .action-btn:focus {
+            outline: 2px solid white;
+        }
+        
+        .trending-artists {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+        
+        .artist-card {
+            background: rgba(85, 107, 47, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .artist-card:hover {
+            transform: translateY(-5px);
+            background: rgba(85, 107, 47, 0.6);
+        }
+        
+        .artist-card:focus {
+            outline: 2px solid white;
+        }
+        
+        .artist-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 10px;
+            border: 3px solid var(--golden-grass);
+        }
+        
+        .artist-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: var(--golden-grass);
+        }
+        
+        .artist-genre {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .disclaimer {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            font-size: 0.9rem;
+        }
+        
+        .search-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .search-bar {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light-beige);
+            font-size: 1rem;
+        }
+        
+        .search-bar input:focus {
+            outline: 2px solid var(--golden-grass);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .search-bar button {
+            background: var(--acacia-green);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background: var(--golden-grass);
+        }
+        
+        .search-bar button:focus {
+            outline: 2px solid white;
+        }
+        
+        .category-filter {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+        
+        .category-filter::-webkit-scrollbar {
+            height: 5px;
+        }
+        
+        .category-filter::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .category-filter::-webkit-scrollbar-thumb {
+            background: var(--golden-grass);
+            border-radius: 5px;
+        }
+        
+        .category-btn {
+            background: rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            color: var(--light-beige);
+            font-weight: bold;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active {
+            background: var(--acacia-green);
+            color: white;
+        }
+        
+        .category-btn.gospel.active {
+            background: var(--gospel-purple);
+        }
+        
+        .category-btn:focus {
+            outline: 2px solid white;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .loading-spinner {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 5px solid var(--golden-grass);
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        .gospel .loading-spinner {
+            border-top-color: var(--gospel-purple);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .artist-card {
+                padding: 10px;
+            }
+            
+            .artist-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+            
+            .artist-name {
+                font-size: 0.9rem;
+            }
+            
+            .artist-genre {
+                font-size: 0.8rem;
+            }
+            
+            .song-stats {
+                flex-direction: column;
+                gap: 5px;
+                align-items: flex-start;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            
+            .card {
+                background: white;
+                color: black;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+            
+            .action-btn, .category-btn {
+                display: none;
+            }
+        }

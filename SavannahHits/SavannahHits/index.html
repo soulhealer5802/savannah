@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SavannahHits | Discover Top Local Music Trends Across Africa</title>
+    <meta name="description" content="Find the top 10 trending songs in your African city. SavannahHits tracks local music charts across Kenya, Nigeria, South Africa and more.">
+    <meta name="keywords" content="African music, top songs, music charts, local trends, Afrobeats, Amapiano, Gospel">
+    <meta name="author" content="SavannahHits">
+    <meta property="og:title" content="SavannahHits | Local Music Charts">
+    <meta property="og:description" content="Discover trending songs in your African city">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1><i class="fas fa-tree" aria-hidden="true"></i> SavannahHits <i class="fas fa-music" aria-hidden="true"></i></h1>
+                <p class="tagline">Discover the top 10 trending songs in your area</p>
+            </div>
+        </header>
+        
+        <main id="main-content">
+            <div class="search-container">
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for artists, songs, or locations..." aria-label="Search for music">
+                    <button id="search-btn"><i class="fas fa-search" aria-hidden="true"></i> Search</button>
+                </div>
+                
+                <div class="category-filter">
+                    <button class="category-btn active" data-category="all">All Genres</button>
+                    <button class="category-btn" data-category="gospel">Gospel</button>
+                    <button class="category-btn" data-category="afropop">Afropop</button>
+                    <button class="category-btn" data-category="amapiano">Amapiano</button>
+                    <button class="category-btn" data-category="bongo">Bongo Flava</button>
+                </div>
+            </div>
+            
+            <div class="dashboard">
+                <div class="card" id="main-chart">
+                    <h2><i class="fas fa-chart-line" aria-hidden="true"></i> Top 10 Trending Songs</h2>
+                    <div class="location-section">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3 id="current-location">Detecting your location...</h3>
+                            <p id="location-radius">Top songs in your area</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="top-songs-list" id="top-songs">
+                        <!-- Songs will be loaded here -->
+                    </ul>
+                </div>
+                
+                <div class="card gospel" id="gospel-chart">
+                    <h2><i class="fas fa-church" aria-hidden="true"></i> Top 10 Gospel Songs</h2>
+                    <div class="location-section">
+                        <div class="location-icon">
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        </div>
+                        <div class="location-info">
+                            <h3 id="gospel-location">Detecting your location...</h3>
+                            <p>Top gospel songs in your area</p>
+                        </div>
+                    </div>
+                    
+                    <ul class="top-songs-list" id="gospel-songs">
+                        <!-- Gospel songs will be loaded here -->
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-fire" aria-hidden="true"></i> Trending Artists</h2>
+                    <div class="trending-artists" id="trending-artists">
+                        <!-- Artists will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h2><i class="fas fa-globe-africa" aria-hidden="true"></i> Regional Trends</h2>
+                    <div class="disclaimer">
+                        <p><i class="fas fa-info-circle" aria-hidden="true"></i> SavannahHits identifies trending music based on your location. 
+                        Our algorithm analyzes local streaming data, radio plays, and social media engagement to bring you the most popular songs in your area.</p>
+                    </div>
+                    
+                    <div class="location-selector" style="margin-top: 20px;">
+                        <label for="location-select" style="display: block; margin-bottom: 8px;">Change location:</label>
+                        <select id="location-select" style="width: 100%; padding: 10px; border-radius: 5px; background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--golden-grass);">
+                            <option value="auto">Auto-detect (Recommended)</option>
+                            <option value="Nairobi">Nairobi, Kenya</option>
+                            <option value="Lagos">Lagos, Nigeria</option>
+                            <option value="Johannesburg">Johannesburg, South Africa</option>
+                            <option value="Accra">Accra, Ghana</option>
+                            <option value="Dar es Salaam">Dar es Salaam, Tanzania</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p><i class="fas fa-exclamation-circle" aria-hidden="true"></i> Note: This is a demonstration website. In a production environment, 
+                we would integrate with music APIs and location services to provide real-time data.</p>
+            </div>
+        </main>
+        
+        <footer>
+            <p>SavannahHits - Bringing Africa's rhythm to your doorstep | &copy; <span id="current-year"></span></p>
+            <p>Designed with <i class="fas fa-heart" style="color: #ff6b6b;" aria-hidden="true"></i> for music lovers across Africa</p>
+            <p style="margin-top: 10px;">
+                <a href="#" style="color: var(--golden-grass); text-decoration: none;">Privacy Policy</a> | 
+                <a href="#" style="color: var(--golden-grass); text-decoration: none;">Terms of Service</a> | 
+                <a href="#" style="color: var(--golden-grass); text-decoration: none;">Contact Us</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
